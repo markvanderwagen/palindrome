@@ -6,19 +6,8 @@ import ResultBlock from "./ResultBlock";
 const PalindromeChecker = () => {
   const [word, setWord] = useState("");
 
-  const isPalindrome = (originalWord) => {
-    let wordInReverse = "";
-    for (let i = originalWord.length - 1; i >= 0; i--) {
-      wordInReverse += originalWord[i];
-    }
-    if (wordInReverse == originalWord) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  const Formatter = (word) => {
+  // remove invalid characters and spaces from word
+  const wordFormatter = (word) => {
     var invalidCharacters = [
       ".",
       ",",
@@ -56,6 +45,18 @@ const PalindromeChecker = () => {
     return word.toLowerCase();
   };
 
+  // check if word is a palindrome
+  const isPalindrome = (originalWord) => {
+    let wordInReverse = "";
+
+    // loop through word backwards and add each letter to wordInReverse
+    for (let i = originalWord.length - 1; i >= 0; i--) {
+      wordInReverse += originalWord[i];
+    }
+
+    return wordInReverse == originalWord ? true : false;
+  };
+
   return (
     <div className="bg-white md:w-2/3 w-full m-5 h-auto rounded-3xl flex justify-center">
       <div className="bg-white h-auto rounded-3xl w-full">
@@ -70,9 +71,7 @@ const PalindromeChecker = () => {
             onChange={(e) => setWord(e.target.value)}
           />
         </div>
-        <div className="w-full">
-          <ResultBlock result={isPalindrome(Formatter(word))} word={word} />
-        </div>
+        <ResultBlock result={isPalindrome(wordFormatter(word))} word={word} />
       </div>
     </div>
   );

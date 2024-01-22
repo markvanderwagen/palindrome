@@ -3,7 +3,7 @@
 import { useState } from "react";
 import ResultBlock from "./ResultBlock";
 
-const Palindrome = () => {
+const PalindromeChecker = () => {
   const [word, setWord] = useState("");
 
   const isPalindrome = (originalWord) => {
@@ -78,4 +78,4 @@ const Palindrome = () => {
   );
 };
 
-export default Palindrome;
+export default PalindromeChecker;

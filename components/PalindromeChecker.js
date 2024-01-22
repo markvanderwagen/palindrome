@@ -1,23 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import ResultBlock from "./ResultBlock";
+import { useIsPalindrome } from "../utils/useIsPalindrome";
 
 const PalindromeChecker = () => {
   const [words, setWords] = useState("");
-
-  // remove invalid characters and spaces from sentence
-  const wordFormatter = (words) => {
-    return words.replace(/[^a-zA-Z0-9]/g, "");
-  };
-
-  // check if word is a palindrome
-  const isPalindrome = (originalWords) => {
-    // optimised this to use javascript functions instead of vanilla JS
-    let wordsInReverse = originalWords.split("").reverse().join("");
-
-    return wordsInReverse == originalWords ? true : false;
-  };
+  const isPalindrome = useIsPalindrome(words);
 
   return (
     <div className="bg-white md:w-2/3 w-full m-5 h-auto rounded-3xl flex justify-center">
@@ -34,8 +23,8 @@ const PalindromeChecker = () => {
           />
         </div>
         <ResultBlock
-          result={isPalindrome(wordFormatter(words))}
-          words={words}
+          result={isPalindrome}
+          words={words.replace(/[^a-zA-Z0-9]/g, "")}
         />
       </div>
     </div>

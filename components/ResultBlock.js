@@ -11,7 +11,7 @@ const ResultBlock = ({ result, word }) => {
         </div>
       ) : (
         <div
-          className={`flex justify-center items-center font-bold font-mono text-4xl bg-gray-500
+          className={`flex justify-center text-center items-center font-bold font-mono text-4xl bg-gray-500
            m-4 rounded-2xl text-white p-5`}
         >
           Enter a word for results!

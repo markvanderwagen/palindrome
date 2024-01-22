@@ -57,7 +57,7 @@ const Palindrome = () => {
   };
 
   return (
-    <div className="bg-white md:w-2/3 m-5 h-auto rounded-3xl flex justify-center">
+    <div className="bg-white md:w-2/3 w-full m-5 h-auto rounded-3xl flex justify-center">
       <div className="bg-white h-auto rounded-3xl w-full">
         <div className=" flex justify-center font-bold font-mono text-lg bg-black m-4 rounded-2xl text-white p-2">
           Type your word below!

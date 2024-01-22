@@ -8,51 +8,13 @@ const PalindromeChecker = () => {
 
   // remove invalid characters and spaces from sentence
   const wordFormatter = (words) => {
-    var invalidCharacters = [
-      ".",
-      ",",
-      "/",
-      "#",
-      "!",
-      "?",
-      "+",
-      "<",
-      ">",
-      "$",
-      "%",
-      "^",
-      "&",
-      "@",
-      "*",
-      ";",
-      ":",
-      "{",
-      "}",
-      "=",
-      "-",
-      "_",
-      "`",
-      "~",
-      "(",
-      ")",
-      " ",
-    ];
-
-    for (var i = 0; i < invalidCharacters.length; i++) {
-      words = words.split(invalidCharacters[i]).join("");
-    }
-
-    return words.toLowerCase();
+    return words.replace(/[^a-zA-Z0-9]/g, "");
   };
 
   // check if word is a palindrome
   const isPalindrome = (originalWords) => {
-    let wordsInReverse = "";
-
-    // loop through word backwards and add each letter to wordsInReverse
-    for (let i = originalWords.length - 1; i >= 0; i--) {
-      wordsInReverse += originalWords[i];
-    }
+    // optimised this to use javascript functions instead of vanilla JS
+    let wordsInReverse = originalWords.split("").reverse().join("");
 
     return wordsInReverse == originalWords ? true : false;
   };

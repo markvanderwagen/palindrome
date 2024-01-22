@@ -1,7 +1,7 @@
-const ResultBlock = ({ result, word }) => {
+const ResultBlock = ({ result, words }) => {
   return (
     <div className="bg-white h-auto rounded-3xl">
-      {word.length > 0 ? (
+      {words.length > 0 ? (
         <div
           className={`flex justify-center items-center font-bold font-mono text-4xl ${
             result ? "bg-green-500" : "bg-red-500"

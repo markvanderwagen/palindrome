@@ -4,10 +4,10 @@ import { useState } from "react";
 import ResultBlock from "./ResultBlock";
 
 const PalindromeChecker = () => {
-  const [word, setWord] = useState("");
+  const [words, setWords] = useState("");
 
-  // remove invalid characters and spaces from word
-  const wordFormatter = (word) => {
+  // remove invalid characters and spaces from sentence
+  const wordFormatter = (words) => {
     var invalidCharacters = [
       ".",
       ",",
@@ -39,39 +39,42 @@ const PalindromeChecker = () => {
     ];
 
     for (var i = 0; i < invalidCharacters.length; i++) {
-      word = word.split(invalidCharacters[i]).join("");
+      words = words.split(invalidCharacters[i]).join("");
     }
 
-    return word.toLowerCase();
+    return words.toLowerCase();
   };
 
   // check if word is a palindrome
-  const isPalindrome = (originalWord) => {
-    let wordInReverse = "";
+  const isPalindrome = (originalWords) => {
+    let wordsInReverse = "";
 
-    // loop through word backwards and add each letter to wordInReverse
-    for (let i = originalWord.length - 1; i >= 0; i--) {
-      wordInReverse += originalWord[i];
+    // loop through word backwards and add each letter to wordsInReverse
+    for (let i = originalWords.length - 1; i >= 0; i--) {
+      wordsInReverse += originalWords[i];
     }
 
-    return wordInReverse == originalWord ? true : false;
+    return wordsInReverse == originalWords ? true : false;
   };
 
   return (
     <div className="bg-white md:w-2/3 w-full m-5 h-auto rounded-3xl flex justify-center">
       <div className="bg-white h-auto rounded-3xl w-full">
         <div className=" flex justify-center font-bold font-mono text-lg bg-black m-4 rounded-2xl text-white p-2">
-          Type your word below!
+          Type your sentence below!
         </div>
         <div className="flex justify-center m-4">
           <input
             className="border-2 rounded-2xl p-4 w-full"
             placeholder="Here!"
-            value={word}
-            onChange={(e) => setWord(e.target.value)}
+            value={words}
+            onChange={(e) => setWords(e.target.value)}
           />
         </div>
-        <ResultBlock result={isPalindrome(wordFormatter(word))} word={word} />
+        <ResultBlock
+          result={isPalindrome(wordFormatter(words))}
+          words={words}
+        />
       </div>
     </div>
   );
